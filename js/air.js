@@ -1,30 +1,23 @@
-var l,c;
+var l,c, inf;
+
 
 function init() {
+inf = get('data');
+inf = hex2a(inf);
+wdata(inf);
 sel(1,3);
 }
-String.prototype.replaceAt=function(index, character) {
-    return this.substr(0, index) + character + this.substr(index + 1);
-}
+function wdata(string) {
+ // <tr><td class='num'>1</td><td id='1'></td></tr>
+var str2 = string.split("\n");
+var i = 0;
+str2.forEach(function(element) {
+    i = i + 1;
+    document.getElementById("data").innerHTML = document.getElementById("data").innerHTML + "<tr><td class='num'>" + String(i) + "</td><td id='" + String(i) + "'>" + element + "</td></tr>";
+});
 
-if (!String.prototype.splice) {
-    /**
-     * {JSDoc}
-     *
-     * The splice() method changes the content of a string by removing a range of
-     * characters and/or adding new characters.
-     *
-     * @this {String}
-     * @param {number} start Index at which to start changing the string.
-     * @param {number} delCount An integer indicating the number of old chars to remove.
-     * @param {string} newSubStr The String that is spliced in.
-     * @return {string} A new string with the spliced substring.
-     */
-    String.prototype.splice = function(start, delCount, newSubStr) {
-        return this.slice(0, start) + newSubStr + this.slice(start + Math.abs(delCount));
-    };
-}
 
+}
 
 
 function on(line, column) {
@@ -87,5 +80,3 @@ function runkey(code) {
 	}
 }
 
-
-init();
