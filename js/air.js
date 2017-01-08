@@ -1,3 +1,5 @@
+var l,c;
+
 function init() {
 sel(1,3);
 }
@@ -11,8 +13,7 @@ var a =  document.getElementById(line).innerHTML;
 str = a.replaceAt(column, "<u>" + a.slice(column,column+1) + "</u>");
 	console.log(a.slice(column,column+1));
 	document.getElementById(line).innerHTML = str;
-    console.log("on");
-    setTimeout(function() { off(line, column); }, 750);
+    setTimeout(function() { off(line, column); }, 250);
 }
 
 
@@ -22,14 +23,38 @@ str = str.replace("<u>", "");
 str = str.replace("</u>", "");
 
 document.getElementById(line).innerHTML = str;
-    console.log("off");
 }
 
-
+interval = 0;
 function sel(line, column) {
-setInterval(function() {
-setTimeout(function() { on(line, column); }, 750);
-}, 1500);
+console.log("run");
+clearInterval(interval);
+l = line;
+c = column;
+interval = setInterval(function() {
+setTimeout(function() { on(line, column); }, 250);
+}, 500);
 }
+document.onkeydown=function(e){
+    runkey(e.keyCode);
+    
+}
+
+function runkey(code) {
+    console.log(code);
+	if (code == 38) {
+		sel((l - 1),c);
+	}
+	if (code == 40) {
+		sel((l + 1),c);
+	}
+	if (code == 37) {
+		sel(l,c - 1);
+	}
+	if (code == 39) {
+		sel(l,c + 1);
+	}
+}
+
 
 init();

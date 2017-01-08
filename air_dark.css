@@ -19,3 +19,12 @@ td {
 	letter-spacing: 2px;
 	font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
 }
+
+u {
+	font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
+}
+
+.fl {
+    -webkit-filter: invert(100%);
+    filter: invert(100%);
+}
