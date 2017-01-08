@@ -5,6 +5,8 @@ function init() {
 inf = get('data');
 inf = hex2a(inf);
 wdata(inf);
+l = 1;
+c = 3;
 sel(1,3);
 }
 function wdata(string) {
@@ -13,7 +15,7 @@ var str2 = string.split("\n");
 var i = 0;
 str2.forEach(function(element) {
     i = i + 1;
-    document.getElementById("data").innerHTML = document.getElementById("data").innerHTML + "<tr><td class='num'>" + String(i) + "</td><td id='" + String(i) + "'>" + element + "</td></tr>";
+    document.getElementById("data").innerHTML = document.getElementById("data").innerHTML + "<tr><td class='num'>" + String(i) + "</td><td class='' id='" + String(i) + "'>" + element + "</td></tr>";
 });
 
 
@@ -39,10 +41,13 @@ document.getElementById(line).innerHTML = str;
 
 interval = 0;
 function sel(line, column) {
+document.getElementById(l).className = "";
 console.log("run");
 clearInterval(interval);
 l = line;
 c = column;
+document.getElementById(l).className = "sel";
+setTimeout(function() { on(line, column); }, 250);
 interval = setInterval(function() {
 setTimeout(function() { on(line, column); }, 250);
 }, 500);

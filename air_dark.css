@@ -6,7 +6,16 @@ color: white;
 body {
 overflow: hidden;
 }
-
+.nav {
+	width: 100%;
+	padding: 2px;
+	background-color: #262626;
+	color: white;
+}
+a {
+	padding: 2px;
+	color: white;
+	}
 
 .editor {
 background-color: #0c0c0c;
@@ -15,6 +24,10 @@ height: 90%;
 margin: 4px;
 max-height: 90%;
 overflow-y: scroll;
+}
+
+.sel {
+	background-color: #333333;
 }
 td {
 	letter-spacing: 2px;
