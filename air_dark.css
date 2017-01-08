@@ -1,4 +1,21 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 * {
 font-family: 'Roboto', sans-serif;
+color: white;
+}
+body {
+overflow: hidden;
+}
+
+
+.editor {
+background-color: #0c0c0c;
+width: 100%;
+height: 90%;
+margin: 4px;
+max-height: 90%;
+}
+td {
+	letter-spacing: 2px;
+	font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
 }
