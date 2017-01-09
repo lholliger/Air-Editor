@@ -31,11 +31,13 @@ str = a.replaceAt(column, "<u>" + a.slice(column,column+1) + "</u>");
 
 
 function off(line, column) {
+HI_CLR();
 var str = document.getElementById(line).innerHTML;
 str = str.replace("<u>", "");
 str = str.replace("</u>", "");
 
 document.getElementById(line).innerHTML = str;
+HI_REP();
 }
 
 interval = 0;
@@ -84,6 +86,13 @@ function runkey(code) {
 		off(l,c);
 		sel(l,c + 1);
 	}
+	else if (code == 13) {
+		off(l, c);
+		var str = document.getElementById("data").innerHTML;
+		var str2 = str.replace("<tr><td class='num'>" + (l+1), "<tr><td class='num'>" + (l+1) + "</td><td class='' id='" + l + "'>" + " " + "</td></tr>" + "<tr><td class='num'>" + (l+1));
+		document.getElementById("data").innerHTML = str2;
+		sel(l + 1,1);
+		}
 	else if (code == 8) {
 		off(l,c);
 		str = document.getElementById(l).innerHTML;
