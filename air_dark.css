@@ -42,3 +42,6 @@ u {
     -webkit-filter: invert(100%);
     filter: invert(100%);
 }
+.num {
+ max-width:1%;
+}

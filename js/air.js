@@ -1,5 +1,5 @@
 var l,c, inf;
-
+var debug = true;
 
 function init() {
 inf = get('data');
@@ -23,11 +23,10 @@ str2.forEach(function(element) {
 
 
 function on(line, column) {
+if (debug == true) { console.log("on"); }
 var a =  document.getElementById(line).innerHTML;
 str = a.replaceAt(column, "<u>" + a.slice(column,column+1) + "</u>");
-	console.log(a.slice(column,column+1));
 	document.getElementById(line).innerHTML = str;
-    setTimeout(function() { off(line, column); }, 250);
 }
 
 
@@ -42,37 +41,39 @@ document.getElementById(line).innerHTML = str;
 interval = 0;
 function sel(line, column) {
 document.getElementById(l).className = "";
-console.log("run");
 clearInterval(interval);
 l = line;
 c = column;
 document.getElementById(l).className = "sel";
-setTimeout(function() { on(line, column); }, 250);
-interval = setInterval(function() {
-setTimeout(function() { on(line, column); }, 250);
-}, 500);
+on(line, column);
+
 }
 document.onkeydown=function(e){
+	off(l, c);
     runkey(e.keyCode);
     
 }
 
 function runkey(code) {
-    console.log(code);
+    console.log("KEYDOWN: " + code);
 	if (code == 38) {
+		off(l,c);
 		sel((l - 1),c);
 	}
 	else if (code == 40) {
+		off(l,c);
 		sel((l + 1),c);
 	}
 	else if (code == 37) {
+		off(l,c);
 		sel(l,c - 1);
 	}
 	else if (code == 39) {
+		off(l,c);
 		sel(l,c + 1);
 	}
 	else if (code == 8) {
-		off(l,c)
+		off(l,c);
 		str = document.getElementById(l).innerHTML;
 		document.getElementById(l).innerHTML = str.slice(0, c-1) + str.slice(c);
 		sel(l, c - 1);
@@ -80,7 +81,7 @@ function runkey(code) {
 	else {
 		off(l, c);
 		a = document.getElementById(l).innerHTML;
-		document.getElementById(l).innerHTML = a.splice(c, c, String.fromCharCode(code));
+		document.getElementById(l).innerHTML = a.splice(c, 0, String.fromCharCode(code));
 		sel(l, c + 1);
 	}
 }
