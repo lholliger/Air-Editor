@@ -58,10 +58,22 @@ function runkey(code) {
     console.log("KEYDOWN: " + code);
 	if (code == 38) {
 		off(l,c);
+		var lstr = document.getElementById(l - 1).innerHTML;
+		console.log(lstr.length);
+		console.log(c);
+		if (lstr.length < c) {
+		c = lstr.length;
+		}
 		sel((l - 1),c);
 	}
 	else if (code == 40) {
 		off(l,c);
+			var lstr = document.getElementById(l + 1).innerHTML;
+				console.log(lstr.length);
+		console.log(c);
+		if (lstr.length < c) {
+		c = lstr.length;
+		}
 		sel((l + 1),c);
 	}
 	else if (code == 37) {
